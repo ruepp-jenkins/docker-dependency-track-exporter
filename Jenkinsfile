@@ -14,7 +14,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_FULLNAME = 'ruepp/dependency-track-exporter/'
+        IMAGE_FULLNAME = 'ruepp/dependency-track-exporter'
         DOCKER_API_PASSWORD = credentials('DOCKER_API_PASSWORD')
         DEPENDENCYTRACK_HOST = 'http://172.20.89.2:8080'
         DEPENDENCYTRACK_API_TOKEN = credentials('dependencychecker')
