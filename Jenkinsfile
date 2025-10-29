@@ -10,7 +10,7 @@ properties(
 
 pipeline {
     agent {
-        label 'oracle_docker'
+        label 'docker'
     }
 
     environment {
