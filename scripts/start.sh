@@ -11,13 +11,15 @@ DATESTAMP=$(date +%Y%m%d)
 echo "[${BRANCH_NAME}] Building image: ${IMAGE_FULLNAME}"
 if [ "$BRANCH_NAME" = "master" ] || [ "$BRANCH_NAME" = "main" ]
 then
-    docker build \
+    docker buildx build \
+        --platform linux/amd64,linux/arm64 \
         -t ${IMAGE_FULLNAME}:latest \
         -t ${IMAGE_FULLNAME}:${DATESTAMP} \
         --pull \
         --push ./repo/
 else
-    docker build \
+    docker buildx build \
+        --platform linux/amd64,linux/arm64 \
         -t ${IMAGE_FULLNAME}-test:${BRANCH_NAME} \
         --pull \
         --push ./repo/
