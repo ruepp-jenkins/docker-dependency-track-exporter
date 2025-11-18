@@ -1,4 +1,4 @@
-FROM golang:buster AS build
+FROM golang:trixie AS build
 
 WORKDIR /app
 
