@@ -4,6 +4,8 @@ echo "Starting build workflow"
 
 scripts/docker_initialize.sh
 scripts/git.sh
+rm repo/Dockerfile
+mv Dockerfile repo/Dockerfile
 
 DATESTAMP=$(date +%Y%m%d)
 
@@ -15,14 +17,12 @@ then
         --platform linux/amd64,linux/arm64 \
         -t ${IMAGE_FULLNAME}:latest \
         -t ${IMAGE_FULLNAME}:${DATESTAMP} \
-        -f repo/Dockerfile.goreleaser \
         --pull \
         --push ./repo/
 else
     docker buildx build \
         --platform linux/amd64,linux/arm64 \
         -t ${IMAGE_FULLNAME}-test:${BRANCH_NAME} \
-        -f repo/Dockerfile.goreleaser \
         --pull \
         --push ./repo/
 fi
